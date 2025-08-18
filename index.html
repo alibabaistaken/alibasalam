@@ -1491,9 +1491,7 @@
                 <h1>Hello, I'm Ali Basalam</h1>
                 <p class="hero-subtitle">Software Developer</p>
                 <p class="hero-description">
-                    Recent Computer Information Systems graduate with expertise in full-stack development, 
-                    ERP systems, and artificial intelligence. Passionate about creating innovative solutions 
-                    that drive business growth and enhance user experiences.
+                    a developer who thinks like a strategist and builds like a problem-solver. My background spans full-stack development, ERP systems, and AI, but what really drives me is creating software that feels effortless to use. I’ve lived and traveled across cultures, speak multiple languages, and carry the same focus from the soccer field into every project: read the game, make the right move, and deliver results that matter.
                 </p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">
@@ -1506,7 +1504,7 @@
             </div>
             <div class="hero-image">
                 <div class="profile-bg"></div>
-                <img src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3e%3crect width='300' height='300' fill='%23ff5722'/%3e%3ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='white' font-size='120' font-family='Arial'%3eAB%3c/text%3e%3c/svg%3e" alt="Ali Basalam" class="profile-image">
+                <img src="https://raw.githubusercontent.com/alibabaistaken/alibasalam/66398ed1ca195f97bab3ca00ed8f29e8ba256f24/alibaba%20prof.png" alt="Ali Basalam" class="profile-image" id="profileImage" onerror="this.src='data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'300\' viewBox=\'0 0 300 300\'%3e%3crect width=\'300\' height=\'300\' fill=\'%23ff5722\'/%3e%3ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' dy=\'.3em\' fill=\'white\' font-size=\'120\' font-family=\'Arial\'%3eAB%3c/text%3e%3c/svg%3e'">
             </div>
         </div>
     </section>
@@ -1903,6 +1901,53 @@
 </html>
 
 <script>
+// Load profile image if available
+async function loadProfileImage() {
+    const possibleNames = [
+        'image.png', 'image.jpg', 'image.jpeg', 'image.gif', 'image.webp',
+        'profile.png', 'profile.jpg', 'profile.jpeg', 'profile.gif', 'profile.webp',
+        'ali.png', 'ali.jpg', 'ali.jpeg', 'ali.gif', 'ali.webp',
+        'photo.png', 'photo.jpg', 'photo.jpeg', 'photo.gif', 'photo.webp',
+        'untitled.png', 'untitled.jpg', 'untitled.jpeg',
+        'file.png', 'file.jpg', 'file.jpeg'
+    ];
+    
+    for (const fileName of possibleNames) {
+        try {
+            const imageData = await window.fs.readFile(fileName);
+            const extension = fileName.split('.').pop().toLowerCase();
+            
+            let mimeType = 'image/png';
+            if (extension === 'jpg' || extension === 'jpeg') {
+                mimeType = 'image/jpeg';
+            } else if (extension === 'gif') {
+                mimeType = 'image/gif';
+            } else if (extension === 'webp') {
+                mimeType = 'image/webp';
+            }
+            
+            const base64String = btoa(String.fromCharCode.apply(null, imageData));
+            const dataUrl = `data:${mimeType};base64,${base64String}`;
+            
+            const profileImg = document.getElementById('profileImage');
+            if (profileImg) {
+                profileImg.src = dataUrl;
+                console.log('Profile image loaded successfully!');
+            }
+            break;
+        } catch (error) {
+            // Continue trying other filenames
+        }
+    }
+}
+
+// Try to load the profile image when the page loads
+window.addEventListener('load', () => {
+    if (window.fs && window.fs.readFile) {
+        loadProfileImage();
+    }
+});
+
 // Ali's comprehensive information for AI context
 const aliContext = `You are Alibaba AI, representing Ali Basalam. Key facts about Ali:
 
