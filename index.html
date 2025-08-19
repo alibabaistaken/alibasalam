@@ -1,5 +1,4 @@
-<p class="hero-description">
-    A multilingual software developer who's turne<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -332,7 +331,7 @@ line-height: 1.8;
 
 .stats-grid {
 display: grid;
-grid-template-columns: repeat(3, 1fr);
+grid-template-columns: repeat(2, 1fr);
 gap: 2rem;
 }
 
@@ -966,7 +965,7 @@ gap: 3rem;
 }
 
 .stats-grid {
-grid-template-columns: repeat(3, 1fr);
+grid-template-columns: repeat(2, 1fr);
 gap: 1rem;
 }
 }
@@ -1492,7 +1491,7 @@ transform: translateY(0);
 <h1>Hello, I'm Ali Basalam</h1>
 <p class="hero-subtitle">Software Developer</p>
 <p class="hero-description">
-    a developer who thinks like a strategist and builds like a problem-solver. My background spans full-stack development, ERP systems, and AI, but what really drives me is creating software that feels effortless to use. I’ve lived and traveled across cultures, speak multiple languages, and carry the same focus from the soccer field into every project: read the game, make the right move, and deliver results that matter.
+    a developer who thinks like a strategist and builds like a problem-solver. My background spans full-stack development, ERP systems, and AI, but what really drives me is creating software that feels effortless to use. I've lived and traveled across cultures, speak multiple languages, and carry the same focus from the soccer field into every project: read the game, make the right move, and deliver results that matter.
 
 </p>
 <div class="hero-buttons">
@@ -1531,10 +1530,6 @@ transform: translateY(0);
     <div class="stat-item">
         <div class="stat-number">3+</div>
         <div class="stat-label">Years Experience</div>
-    </div>
-    <div class="stat-item">
-        <div class="stat-number">500+</div>
-        <div class="stat-label">Students Impacted</div>
     </div>
 </div>
 </div>
@@ -2118,35 +2113,157 @@ continue;
 throw new Error('AI models unavailable');
 }
 
-// Smart fallback function
+// Smart fallback function with expanded knowledge, random responses, and cross-questions
+let lastTopic = "";
+
 function getSmartFallback(message) {
-const normalizedMessage = message.toLowerCase();
+    const normalizedMessage = message.toLowerCase();
 
-if (normalizedMessage.includes('skill') || normalizedMessage.includes('technical') || normalizedMessage.includes('programming')) {
-return "Ali has an impressive technical arsenal! 🚀 He's proficient in Python, Java, C#, C++, JavaScript, and SQL. He excels in full-stack development with React and Node.js, specializes in AI/ML with YOLO models and TensorFlow, and works with cloud platforms like AWS and Azure!";
-}
+    // Helper function to pick a random response
+    function randomResponse(responses) {
+        return responses[Math.floor(Math.random() * responses.length)];
+    }
 
-if (normalizedMessage.includes('project') || normalizedMessage.includes('built') || normalizedMessage.includes('portfolio')) {
-return "Ali has built some absolutely fascinating projects! 🛠️ His crown jewel is an AI Image Recognition System using YOLO models that Bradley University integrated into their AI curriculum. He's also created a COVID Resources AI Chatbot using HTML, JavaScript and Tailwind CSS, a full-stack E-commerce Platform, and several other innovative systems!";
-}
+    // Skills / Technical
+    if (/\b(skill|technical|language|coding|framework|tools|proficient|knowledge|stack)\b/.test(normalizedMessage)) {
+        lastTopic = "skills";
+        const responses = [
+            "Ali is proficient in Python, Java, C#, C++, JavaScript, and SQL.",
+            "He has strong full-stack development expertise with React and Node.js.",
+            "Ali specializes in machine learning using TensorFlow and YOLO models.",
+            "He works with cloud platforms such as AWS and Azure.",
+            "His database skills cover MySQL, PostgreSQL, and MongoDB.",
+            "Ali has experience building APIs, microservices, and scalable systems.",
+            "He has worked extensively with CI/CD pipelines and Git workflows."
+        ];
+        return randomResponse(responses);
+    }
 
-if (normalizedMessage.includes('experience') || normalizedMessage.includes('work') || normalizedMessage.includes('job')) {
-return "Ali has diverse professional experience! 💼 Currently he's a Student Supervisor at Bradley University managing 500+ students weekly. Previously, he was a Software Developer at Sahllak.com building ERP systems, and a Data Analyst at Ideal Solutions optimizing delivery operations!";
-}
+    // Projects
+    if (/\b(project|portfolio|built|application|system|developed|created)\b/.test(normalizedMessage)) {
+        lastTopic = "projects";
+        const responses = [
+            "Ali built an AI Image Recognition System using YOLO, which Bradley University integrated into their AI curriculum.",
+            "He developed a COVID-19 Resources Chatbot using HTML, JavaScript, and Tailwind CSS.",
+            "Ali co-created a full-stack e-commerce platform with Node.js and MySQL.",
+            "He worked on ERP systems during his internship at Sahllak.com.",
+            "Ali designed a shopping website with cart and checkout functionality as part of a college project."
+        ];
+        return randomResponse(responses);
+    }
 
-if (normalizedMessage.includes('hello') || normalizedMessage.includes('hi') || normalizedMessage.includes('hey')) {
-return "Hello there! 👋 I'm Alibaba AI, excited to tell you about Ali Basalam! He's a talented 24-year-old software developer from Chicago with an incredible international background. What would you like to know about him?";
-}
+    // Cross-questions for projects
+    if (lastTopic === "projects" && /\b(where|when|how|why)\b/.test(normalizedMessage)) {
+        const responses = [
+            "He built most of his projects during his studies at Bradley University.",
+            "Some projects were professional, like ERP systems during his internship.",
+            "He often builds projects to solve real-world problems or as academic requirements.",
+            "Most of his projects were developed using modern frameworks like React and Node.js."
+        ];
+        return randomResponse(responses);
+    }
 
-if (normalizedMessage.includes('location') || normalizedMessage.includes('where') || normalizedMessage.includes('chicago')) {
-return "Ali is currently based in Chicago, Illinois! 🏙️ But he's lived in 4 different countries throughout his life: Oman, India, Malaysia, and the United States. This international experience gives him a unique global perspective!";
-}
+    // Experience
+    if (/\b(experience|work|job|career|role|internship)\b/.test(normalizedMessage)) {
+        lastTopic = "experience";
+        const responses = [
+            "Ali is a Student Supervisor at Bradley University, managing operations for over 500 students weekly.",
+            "He worked as a Software Developer Intern at Sahllak.com, where he contributed to ERP systems.",
+            "Ali gained industry exposure as a Data Analyst at Ideal Solutions, optimizing delivery operations.",
+            "He has collaborated with senior developers in professional team environments.",
+            "Ali has been involved in both software development and data analysis roles."
+        ];
+        return randomResponse(responses);
+    }
 
-if (normalizedMessage.includes('contact') || normalizedMessage.includes('email') || normalizedMessage.includes('hire')) {
-return "You can reach Ali at abasalam@mail.bradley.edu or (331) 282-5715! 📧 He's actively looking for opportunities, especially in Silicon Valley as a Lead Software Developer. He'd be a great addition to any tech team!";
-}
+    // Education
+    if (/\b(education|study|university|college|degree|school)\b/.test(normalizedMessage)) {
+        lastTopic = "education";
+        const responses = [
+            "Ali studied Computer Information Systems at Bradley University.",
+            "His coursework included advanced programming, database design, and cloud computing.",
+            "He has an international academic background, having studied in Malaysia before Bradley.",
+            "Ali often applies classroom knowledge directly into his projects."
+        ];
+        return randomResponse(responses);
+    }
 
-return "That's an interesting question! 🤖 I'm here to share everything about Ali Basalam - his technical expertise, amazing projects, professional experience, and international background. What would you like to know about him?";
+    // Achievements
+    if (/\b(achievement|award|recognition|certification|accomplishment)\b/.test(normalizedMessage)) {
+        lastTopic = "achievements";
+        const responses = [
+            "Ali's AI project was integrated into Bradley University's curriculum.",
+            "He successfully led projects with consistent on-time delivery.",
+            "His SQL optimizations improved database performance by 30%.",
+            "Ali gained recognition for his leadership as a Student Supervisor."
+        ];
+        return randomResponse(responses);
+    }
+
+    // Goals
+    if (/\b(goal|future|aspiration|career|dream)\b/.test(normalizedMessage)) {
+        lastTopic = "goals";
+        const responses = [
+            "Ali aims to become a Lead Software Developer in Silicon Valley.",
+            "His long-term goal is to design AI-driven platforms for global impact.",
+            "He hopes to integrate software development with solving real-world business problems.",
+            "Ali values innovation and continuous growth as part of his career path."
+        ];
+        return randomResponse(responses);
+    }
+
+    // Personal Interests
+    if (/\b(hobby|interest|free time|outside work|do you like|fun)\b/.test(normalizedMessage)) {
+        lastTopic = "hobbies";
+        const responses = [
+            "Ali enjoys sneakers and follows sneaker culture closely.",
+            "He is passionate about soccer and international football.",
+            "Ali loves traveling and has lived in Oman, India, Malaysia, and the United States.",
+            "He enjoys gaming and often uses it as a way to relax.",
+            "Ali has a strong interest in exploring global cultures."
+        ];
+        return randomResponse(responses);
+    }
+
+    // Funny / Interesting
+    if (/\b(alien|robot|superpower|joke|funny|meme|fifa|cook|food)\b/.test(normalizedMessage)) {
+        lastTopic = "funny";
+        const responses = [
+            "Ali is not an alien, but his tech skills make him seem futuristic.",
+            "He can cook, but prefers debugging code over cooking recipes.",
+            "If Ali had a superpower, it would be turning coffee into working applications.",
+            "In FIFA, Ali claims he is unbeatable, but no one has tested that thoroughly.",
+            "Ali enjoys programming jokes and often mixes humor with his work."
+        ];
+        return randomResponse(responses);
+    }
+
+    // Location
+    if (/\b(location|where|based|live|city|place)\b/.test(normalizedMessage)) {
+        lastTopic = "location";
+        const responses = [
+            "Ali is currently based in Chicago, Illinois.",
+            "He has lived in four countries: Oman, India, Malaysia, and the United States.",
+            "His global background gives him a unique perspective.",
+            "Chicago is where Ali is now building his career."
+        ];
+        return randomResponse(responses);
+    }
+
+    // Contact
+    if (/\b(contact|email|phone|reach|hire)\b/.test(normalizedMessage)) {
+        lastTopic = "contact";
+        const responses = [
+            "You can reach Ali at abasalam@mail.bradley.edu.",
+            "Ali's phone number is (331) 282-5715.",
+            "He is actively open to opportunities and collaborations.",
+            "Feel free to connect with him for professional discussions."
+        ];
+        return randomResponse(responses);
+    }
+
+    // Fallback
+    return "That's an interesting question. I can tell you about Ali's skills, projects, experience, education, or even some fun facts. What would you like to know?";
 }
 
 // Add message to chat
