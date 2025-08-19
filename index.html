@@ -583,6 +583,9 @@ background: var(--bg-card);
 padding: 2rem;
 border-radius: 12px;
 border: 1px solid var(--border);
+min-height: 320px; /* Fixed height to make all cards uniform */
+display: flex;
+flex-direction: column;
 }
 
 .experience-header h3 {
@@ -606,6 +609,7 @@ margin-bottom: 1rem;
 
 .experience-list {
 list-style: none;
+flex: 1; /* Allow the list to take up remaining space */
 }
 
 .experience-list li {
@@ -613,6 +617,7 @@ color: var(--text-secondary);
 margin-bottom: 0.8rem;
 padding-left: 1.5rem;
 position: relative;
+line-height: 1.5;
 }
 
 .experience-list li::before {
@@ -1181,6 +1186,7 @@ margin-bottom: 2rem;
 
 .experience-card {
 padding: 1.5rem;
+min-height: auto; /* Remove fixed height on mobile */
 }
 
 .experience-header h3 {
@@ -1787,7 +1793,6 @@ transform: translateY(0);
             <li>Wrote optimized SQL queries and stored procedures, enhancing database performance by 30%</li>
             <li>Achieved 90% test coverage for backend modules through comprehensive unit and functional testing</li>
             <li>Utilized AWS CDK for environment provisioning and Terraform for infrastructure automation</li>
-            <li>Built reusable React components contributing to unified application UI</li>
         </ul>
     </div>
 </div>
